@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         videoView.setVideoPath("rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4")
         videoView.start()
         videoView.setMediaController(mediaController)
+
+
     }
 
 

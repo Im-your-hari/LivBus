@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#001F2E"
+    android:background="@color/teal_200"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -21,7 +21,7 @@
         <VideoView
             android:id="@+id/videoView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="571dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +51,7 @@
             android:layout_marginEnd="36dp"
             android:background="#2196F3"
             android:text="EXIT"
+            android:textColor="@color/teal_200"
             app:backgroundTint="#2D3043"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,6 +68,7 @@
             android:layout_marginStart="36dp"
             android:background="#2196F3"
             android:text="RECORD"
+            android:textColor="@color/teal_200"
             app:backgroundTint="#2D3043"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
