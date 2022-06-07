@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
-        videoView.setVideoPath("rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4")
+        videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
         videoView.start()
         videoView.setMediaController(mediaController)
 
@@ -46,11 +46,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         recButton.setOnClickListener(){
-            /*val request = DownloadManager.Request(Uri.parse("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"))
+            /*val request = DownloadManager.Request(Uri.parse("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"))
                 .setTitle("Cartoon")
                 .setDescription("Downloading..!")
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                .setAllowedOverMetered(true)
+                .setAllowedOverMetered(false)
 
             val dm = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
 
