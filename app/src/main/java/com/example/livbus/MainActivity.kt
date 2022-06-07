@@ -3,16 +3,20 @@ package com.example.livbus
 
 import android.app.DownloadManager
 import android.content.ContentValues
+import android.content.Context
 import android.net.Uri
 import android.widget.MediaController
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.Toast
 import android.widget.VideoView
 import androidx.annotation.RequiresApi
+import java.io.File
+import java.lang.Exception
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,14 +60,33 @@ class MainActivity : AppCompatActivity() {
 
             dm.enqueue(request)
             */
-            Toast.makeText(this,"Recording will be add shortly..",Toast.LENGTH_LONG).show()
+
+            download("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4","Bus")
+
+
 
         }
 
     }
 
+    private fun download(url:String,fileName:String) {
+        try {
+            var downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+            var videoLink = Uri.parse(url)
+            var request = DownloadManager.Request(videoLink)
+            request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
+                .setMimeType("video/mp4")
+                .setAllowedOverRoaming(false)
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setTitle(fileName)
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, File.separator+fileName+".mp4")
+            downloadManager.enqueue(request)
 
-
+            Toast.makeText(this,"Downloading...",Toast.LENGTH_LONG).show()
+        }catch (e:Exception){
+            Toast.makeText(this,"Recording failed...",Toast.LENGTH_LONG).show()
+        }
+    }
 
 
 }
