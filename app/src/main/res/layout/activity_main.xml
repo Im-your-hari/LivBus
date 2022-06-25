@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_200"
+    tools:viewBindingIgnore="true"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -18,10 +19,11 @@
         tools:layout_editor_absoluteX="98dp"
         tools:layout_editor_absoluteY="0dp">
 
+
         <VideoView
             android:id="@+id/videoView"
             android:layout_width="match_parent"
-            android:layout_height="571dp"
+            android:layout_height="371dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +33,7 @@
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="375dp"
         android:layout_height="78dp"
         android:layout_marginTop="36dp"
@@ -77,6 +80,20 @@
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/stdView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Student-Id"
+        android:textColor="#F10000"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
