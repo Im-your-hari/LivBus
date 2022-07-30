@@ -3,6 +3,7 @@ package com.example.livbus
 import android.app.DownloadManager
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -24,6 +25,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        var loginBtn = findViewById<Button>(R.id.loginBtn)
+
+        loginBtn.setOnClickListener{
+            var i = Intent(this,MainActivity::class.java)
+            startActivity(i)
+        }
 
     }
 
