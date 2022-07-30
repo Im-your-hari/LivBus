@@ -31,12 +31,15 @@ class MainActivity : AppCompatActivity() {
         val stdId : TextView = findViewById(R.id.stdView)
         val mediaController : MediaController
 
+        val studentName = intent.getStringExtra("stdName")
+        val studentId = intent.getStringExtra("stdId")
+
         val fDatabase : FirebaseDatabase
         var dRef : DatabaseReference
         fDatabase = FirebaseDatabase.getInstance("https://livbus-ae064-default-rtdb.firebaseio.com/")
 
 
-
+        stdId.text="Name : $studentName, Id : $studentId"
 
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)

@@ -28,12 +28,18 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         var loginBtn = findViewById<Button>(R.id.loginBtn)
-        val stdName = findViewById<EditText>(R.id.stdName).text.toString()
-        val stdId = findViewById<EditText>(R.id.stdId).text.toString()
+        var stdName : EditText = findViewById(R.id.stdName)
+        var stdId : EditText = findViewById(R.id.stdId)
         loginBtn.setOnClickListener{
             Log.d(TAG, "Student Name => $stdName")
-            var i = Intent(this,MainActivity::class.java)
-            startActivity(i)
+            /*var i = Intent(this,MainActivity::class.java)
+            startActivity(i)*/
+            //stdName = "Hari"
+            Intent(this,MainActivity::class.java).also {
+                it.putExtra("stdName",stdName.text.toString())
+                it.putExtra("stdId",stdId.text.toString())
+                startActivity(it)
+            }
 
         }
 
