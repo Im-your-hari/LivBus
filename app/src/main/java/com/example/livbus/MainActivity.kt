@@ -19,6 +19,7 @@ import java.io.File
 class MainActivity : AppCompatActivity() {
 
     //private lateinit var fDatabase : FirebaseDatabase
+    private lateinit var databasef : DatabaseReference
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         fDatabase = FirebaseDatabase.getInstance("https://livbus-ae064-default-rtdb.firebaseio.com/")
 
 
-        stdId.text="Name : $studentName, Id : $studentId"
+        //stdId.text="Name : $studentName, Id : $studentId"
 
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
@@ -53,15 +54,22 @@ class MainActivity : AppCompatActivity() {
 
 
         exitBtn.setOnClickListener{
-            finish()
+            //finish()
+
+            val unum = studentName
+            readData(unum)
+
+
+
+
         }
 
         recButton.setOnClickListener{
-            stdId.text = "PRP19CS029"
+            //stdId.text = "PRP19CS029"
             download("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4","Bus")
             //Data
             //dRef = fDatabase.getReference().child("/livbus-ae064/student-id/")
-            dRef = fDatabase.getReference().child("https://livbus-ae064-default-rtdb.firebaseio.com/")
+            /*dRef = fDatabase.getReference().child("https://livbus-ae064-default-rtdb.firebaseio.com/")
             dRef.child("0/student_id").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // This method is called once with the initial value and again
@@ -69,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     val value = dataSnapshot.getValue(String::class.java)
                     Log.d(TAG,"=> $value")
                     stdId.text = value
-                    stdId.text = "Need to check database structure...And arrange it.."
+                    //stdId.text = "Need to check database structure...And arrange it.."
                     Log.d(TAG, "Value is: $value")
                 }
 
@@ -77,7 +85,7 @@ class MainActivity : AppCompatActivity() {
                     // Failed to read value
                     Log.w(TAG, "Failed to read value.", error.toException())
                 }
-            })
+            })*/
 
 
             //Data
@@ -85,6 +93,26 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun readData(unum: String?) {
+        databasef = FirebaseDatabase.getInstance().getReference("/")
+        if (unum != null) {
+            databasef.child(unum).get().addOnSuccessListener {
+                if (it.exists()){
+                    val stuid = it.child("student_id").value
+
+                    Toast.makeText(this,"stuid : ${stuid.toString()}",Toast.LENGTH_LONG).show()
+
+                }else{
+                    Log.d(TAG,"Not exists")
+                }
+            }.addOnFailureListener{
+                Log.d(TAG,"Failed")
+            }
+
+
+        }
+
+    }
 
 
     private fun download(url:String,fileName:String) {
