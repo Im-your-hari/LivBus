@@ -4,7 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Harikrishnan/AndroidStudioProjects/LivBus/app/src/main/res/layout-v31/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Harikrishnan/AndroidStudioProjects/LivBus/app/src/main/res/layout/activity_login.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/Harikrishnan/AndroidStudioProjects/LivBus/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Harikrishnan/AndroidStudioProjects/LivBus/app/src/main/res/layout/login_activity.xml" value="0.11171875" />
       </map>
     </option>
   </component>
@@ -13,5 +15,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>

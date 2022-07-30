@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.LivBus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#44FF00</item>
-        <item name="colorPrimaryVariant">#44FF00</item>
+        <item name="colorPrimary">#ff0000</item>
+        <item name="colorPrimaryVariant">#ffFF00</item>
         <item name="colorOnPrimary">#FF0000</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

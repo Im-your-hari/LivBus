@@ -18,7 +18,7 @@ import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var database : FirebaseDatabase
+    //private lateinit var fDatabase : FirebaseDatabase
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,14 +33,15 @@ class MainActivity : AppCompatActivity() {
 
         val fDatabase : FirebaseDatabase
         var dRef : DatabaseReference
-        fDatabase = FirebaseDatabase.getInstance()
+        fDatabase = FirebaseDatabase.getInstance("https://livbus-ae064-default-rtdb.firebaseio.com/")
 
 
 
 
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
-        videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
+        //videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
+        videoView.setVideoPath("gs://livbus-ae064.appspot.com/video (2).mp4")//Firebase video
         videoView.start()
         videoView.setMediaController(mediaController)
 
@@ -56,12 +57,14 @@ class MainActivity : AppCompatActivity() {
             stdId.text = "PRP19CS029"
             download("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4","Bus")
             //Data
-            dRef = fDatabase.getReference().child("student-id")
-            dRef.child("student_id").addValueEventListener(object : ValueEventListener {
+            //dRef = fDatabase.getReference().child("/livbus-ae064/student-id/")
+            dRef = fDatabase.getReference().child("https://livbus-ae064-default-rtdb.firebaseio.com/")
+            dRef.child("0/student_id").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
                     // This method is called once with the initial value and again
                     // whenever data at this location is updated.
                     val value = dataSnapshot.getValue(String::class.java)
+                    Log.d(TAG,"=> $value")
                     stdId.text = value
                     stdId.text = "Need to check database structure...And arrange it.."
                     Log.d(TAG, "Value is: $value")

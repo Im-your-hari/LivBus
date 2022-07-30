@@ -5,8 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="#FFC107"
     tools:viewBindingIgnore="true"
     tools:context=".MainActivity">
 
@@ -54,7 +55,7 @@
             android:layout_marginEnd="36dp"
             android:background="#2196F3"
             android:text="EXIT"
-            android:textColor="@color/teal_200"
+            android:textColor="#FFC107"
             app:backgroundTint="#2D3043"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +72,7 @@
             android:layout_marginStart="36dp"
             android:background="#2196F3"
             android:text="RECORD"
-            android:textColor="@color/teal_200"
+            android:textColor="#FFC107"
             app:backgroundTint="#2D3043"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
