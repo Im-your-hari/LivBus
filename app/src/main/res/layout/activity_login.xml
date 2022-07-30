@@ -59,7 +59,7 @@
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="30dp"
-        app:backgroundTint="#3F51B5"
+        app:backgroundTint="#2D3043"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"

@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity() {
         exitBtn.setOnClickListener{
             //finish()
 
-            val unum = studentName
-            readData(unum)
+           //val unum = studentId
+            readData(studentId)
 
 
 
@@ -93,20 +93,20 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun readData(unum: String?) {
+    private fun readData(studentId: String?) {
         databasef = FirebaseDatabase.getInstance().getReference("/")
-        if (unum != null) {
-            databasef.child(unum).get().addOnSuccessListener {
+        if (studentId != null) {
+            databasef.child(studentId).get().addOnSuccessListener {
                 if (it.exists()){
                     val stuid = it.child("student_id").value
 
                     Toast.makeText(this,"stuid : ${stuid.toString()}",Toast.LENGTH_LONG).show()
 
                 }else{
-                    Log.d(TAG,"Not exists")
+                    Toast.makeText(this,"No student id found on bus",Toast.LENGTH_LONG).show()
                 }
             }.addOnFailureListener{
-                Log.d(TAG,"Failed")
+                Log.d(TAG,"Enter student id")
             }
 
 
