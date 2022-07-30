@@ -40,12 +40,12 @@ class MainActivity : AppCompatActivity() {
         fDatabase = FirebaseDatabase.getInstance("https://livbus-ae064-default-rtdb.firebaseio.com/")
 
 
-        //stdId.text="Name : $studentName, Id : $studentId"
+
 
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
-        //videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
-        videoView.setVideoPath("gs://livbus-ae064.appspot.com/video (2).mp4")//Firebase video
+        videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
+        //videoView.setVideoPath("gs://livbus-ae064.appspot.com/video (2).mp4")//Firebase video
         videoView.start()
         videoView.setMediaController(mediaController)
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         exitBtn.setOnClickListener{
             //finish()
 
-           //val unum = studentId
+
             readData(studentId)
 
 
@@ -65,30 +65,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         recButton.setOnClickListener{
-            //stdId.text = "PRP19CS029"
+
             download("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4","Bus")
-            //Data
-            //dRef = fDatabase.getReference().child("/livbus-ae064/student-id/")
-            /*dRef = fDatabase.getReference().child("https://livbus-ae064-default-rtdb.firebaseio.com/")
-            dRef.child("0/student_id").addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    val value = dataSnapshot.getValue(String::class.java)
-                    Log.d(TAG,"=> $value")
-                    stdId.text = value
-                    //stdId.text = "Need to check database structure...And arrange it.."
-                    Log.d(TAG, "Value is: $value")
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    // Failed to read value
-                    Log.w(TAG, "Failed to read value.", error.toException())
-                }
-            })*/
-
-
-            //Data
         }
 
     }
