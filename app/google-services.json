@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "118727723351",
+    "firebase_url": "https://livbus-ae064-default-rtdb.firebaseio.com",
+    "project_id": "livbus-ae064",
+    "storage_bucket": "livbus-ae064.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118727723351:android:9d3d3ec24758b46bc9d612",
+        "android_client_info": {
+          "package_name": "com.example.livbus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118727723351-78pbea4jgk73vc2t15dmnr95d371sefg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATNPQmNQDu78IlsgBuYa1I8hd0o3r_1Tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118727723351-78pbea4jgk73vc2t15dmnr95d371sefg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118727723351:android:bcbed257f84ace45c9d612",
+        "android_client_info": {
+          "package_name": "com.livbus.livbus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118727723351-78pbea4jgk73vc2t15dmnr95d371sefg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATNPQmNQDu78IlsgBuYa1I8hd0o3r_1Tw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118727723351-78pbea4jgk73vc2t15dmnr95d371sefg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
