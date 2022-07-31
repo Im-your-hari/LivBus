@@ -54,18 +54,34 @@
         android:id="@+id/loginBtn"
         android:layout_width="355dp"
         android:layout_height="57dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="64dp"
         android:background="#2D3043"
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="30dp"
         app:backgroundTint="#2D3043"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/exitApp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stdId"
-        app:layout_constraintVertical_bias="0.065"
+        app:layout_constraintVertical_bias="0.741"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/exitApp"
+        android:layout_width="355dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="176dp"
+        android:background="#2D3043"
+        android:text="EXIT"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        app:backgroundTint="#2D3043"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stdId"
+        app:layout_constraintVertical_bias="0.205"
         tools:ignore="MissingConstraints" />
 
 

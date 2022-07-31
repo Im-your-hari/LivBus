@@ -59,13 +59,13 @@ class MainActivity : AppCompatActivity() {
             if (i.toString()!==null){
                 databasef.child(i.toString()).get().addOnSuccessListener {
                     if (it.exists()){
-                        val stdId = it.child("student_id").value
-                        if (studentId==stdId.toString()){
+                        val stdId = it.child("student_id").value.toString()
+                        if (studentId==stdId.replace("\\s+".toRegex(),"")){
                             //Function to play video....
 
                             videoView.start()
                             videoView.setMediaController(mediaController)
-                            Toast.makeText(this,"Student entered in bus",Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"$studentName entered in bus",Toast.LENGTH_LONG).show()
                         }
                     }else{
                         //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_SHORT).show()
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
         //___________________________________________________________________________________________________________
         exitBtn.setOnClickListener{
-            //finish()
+            finish()
             readData(studentId)
 
         }
@@ -116,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this,"stuid : ${stuid.toString()}",Toast.LENGTH_LONG).show()
 
                 }else{
-                    Toast.makeText(this,"No student id found on bus",Toast.LENGTH_LONG).show()
+                    //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_LONG).show()
                 }
             }.addOnFailureListener{
                 Log.d(TAG,"Enter student id")

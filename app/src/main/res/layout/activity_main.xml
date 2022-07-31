@@ -54,7 +54,7 @@
             android:layout_height="55dp"
             android:layout_marginEnd="36dp"
             android:background="#2196F3"
-            android:text="EXIT"
+            android:text="LOG OUT"
             android:textColor="#FFC107"
             app:backgroundTint="#2D3043"
             app:layout_constraintBottom_toBottomOf="parent"

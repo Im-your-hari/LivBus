@@ -28,8 +28,10 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         var loginBtn = findViewById<Button>(R.id.loginBtn)
+        var exitApp = findViewById<Button>(R.id.exitApp)
         var stdName : EditText = findViewById(R.id.stdName)
         var stdId : EditText = findViewById(R.id.stdId)
+
         loginBtn.setOnClickListener{
             Log.d(TAG, "Student Name => $stdName")
             /*var i = Intent(this,MainActivity::class.java)
@@ -42,6 +44,11 @@ class LoginActivity : AppCompatActivity() {
             }
 
         }
+
+        exitApp.setOnClickListener{
+            finish()
+        }
+
 
     }
 
