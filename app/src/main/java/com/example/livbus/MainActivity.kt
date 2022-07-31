@@ -52,9 +52,10 @@ class MainActivity : AppCompatActivity() {
         //videoView.setVideoPath("gs://livbus-ae064.appspot.com/video (2).mp4")//Firebase video
         databasef = FirebaseDatabase.getInstance().getReference("/")
 
+        stdId.text="$studentName : $studentId"
         //Loop for continous data check___________________________________________________________________________
 
-        for(i in 0..45){
+         for(i in 0..45){
 
             if (i.toString()!==null){
                 databasef.child(i.toString()).get().addOnSuccessListener {
@@ -65,10 +66,13 @@ class MainActivity : AppCompatActivity() {
 
                             videoView.start()
                             videoView.setMediaController(mediaController)
-                            Toast.makeText(this,"$studentName entered in bus",Toast.LENGTH_LONG).show()
+                            Toast.makeText(this,"$studentName is in the bus",Toast.LENGTH_LONG).show()
+
+
                         }
                     }else{
                         //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_SHORT).show()
+
                     }
                 }.addOnSuccessListener {
                     //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_SHORT).show()
@@ -91,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         //___________________________________________________________________________________________________________
         exitBtn.setOnClickListener{
             finish()
-            readData(studentId)
+            //readData(studentId)
 
         }
         //___________________________________________________________________________________________________________
@@ -105,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //Read data from firebase_________________________________________________________________________________________
+    /*/Read data from firebase_________________________________________________________________________________________
     private fun readData(studentId: String?) {
         databasef = FirebaseDatabase.getInstance().getReference("/")
         if (studentId != null) {
@@ -125,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-    }
+    }*/
     //______________________________________________________________________________________________________________________
 
 
