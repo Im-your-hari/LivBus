@@ -4,6 +4,7 @@ package com.example.livbus
 import android.app.DownloadManager
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -20,22 +21,24 @@ class MainActivity : AppCompatActivity() {
 
     //private lateinit var fDatabase : FirebaseDatabase
     private lateinit var databasef : DatabaseReference
+    private lateinit var videoView : VideoView
+    private lateinit var studentId : String
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val exitBtn : Button = findViewById(R.id.exitBtn)
-        val recButton : Button = findViewById(R.id.recButton)
-        val videoView : VideoView = findViewById(R.id.videoView)
-        val stdId : TextView = findViewById(R.id.stdView)
-        val mediaController : MediaController
+        var exitBtn : Button = findViewById(R.id.exitBtn)
+        var recButton : Button = findViewById(R.id.recButton)
+        //var videoView : VideoView = findViewById(R.id.videoView)
+        videoView = findViewById(R.id.videoView)
+        var stdId : TextView = findViewById(R.id.stdView)
+        var mediaController : MediaController
+        var studentName = intent.getStringExtra("stdName")
+        var studentId = intent.getStringExtra("stdId")
 
-        val studentName = intent.getStringExtra("stdName")
-        val studentId = intent.getStringExtra("stdId")
-
-        val fDatabase : FirebaseDatabase
+        var fDatabase : FirebaseDatabase
         var dRef : DatabaseReference
         fDatabase = FirebaseDatabase.getInstance("https://livbus-ae064-default-rtdb.firebaseio.com/")
 
@@ -44,33 +47,65 @@ class MainActivity : AppCompatActivity() {
 
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
+
         videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
         //videoView.setVideoPath("gs://livbus-ae064.appspot.com/video (2).mp4")//Firebase video
-        videoView.start()
-        videoView.setMediaController(mediaController)
+        databasef = FirebaseDatabase.getInstance().getReference("/")
 
+        //Loop for continous data check___________________________________________________________________________
 
+        for(i in 0..45){
 
+            if (i.toString()!==null){
+                databasef.child(i.toString()).get().addOnSuccessListener {
+                    if (it.exists()){
+                        val stdId = it.child("student_id").value
+                        if (studentId==stdId.toString()){
+                            //Function to play video....
 
-
-        exitBtn.setOnClickListener{
-            //finish()
-
-
-            readData(studentId)
-
-
+                            videoView.start()
+                            videoView.setMediaController(mediaController)
+                            Toast.makeText(this,"Student entered in bus",Toast.LENGTH_LONG).show()
+                        }
+                    }else{
+                        //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_SHORT).show()
+                    }
+                }.addOnSuccessListener {
+                    //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_SHORT).show()
+                }
+            }
 
 
         }
+        //____________________________________________________________________________________________________________________
 
+
+        //video view start function______________________
+
+        //videoView.start()
+        //videoView.setMediaController(mediaController)
+        //_______________________________________________
+
+
+
+        //___________________________________________________________________________________________________________
+        exitBtn.setOnClickListener{
+            //finish()
+            readData(studentId)
+
+        }
+        //___________________________________________________________________________________________________________
+
+        //Record cheyyanulla program_________________________________________________________________________________
         recButton.setOnClickListener{
 
             download("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4","Bus")
         }
+        //____________________________________________________________________________________________________________
 
     }
 
+    //Read data from firebase_________________________________________________________________________________________
     private fun readData(studentId: String?) {
         databasef = FirebaseDatabase.getInstance().getReference("/")
         if (studentId != null) {
@@ -91,8 +126,11 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    //______________________________________________________________________________________________________________________
 
 
+
+    //Download video to mobile_________________________________________________________________________________________________
     private fun download(url:String,fileName:String) {
         try {
             val downloadManager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
@@ -111,6 +149,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this,"recording failed...",Toast.LENGTH_LONG).show()
         }
     }
+    //____________________________________________________________________________________________________________________________
 
 
 }
