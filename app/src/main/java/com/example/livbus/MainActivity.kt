@@ -48,8 +48,9 @@ class MainActivity : AppCompatActivity() {
         mediaController = MediaController(this)
         mediaController.setAnchorView(videoView)
 
-        videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
-        //videoView.setVideoPath("gs://livbus-ae064.appspot.com/video (2).mp4")//Firebase video
+        //videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
+        //videoView.setVideoPath("https://console.firebase.google.com/project/livbus-ae064/storage/livbus-ae064.appspot.com/files/video (2).mp4")//Firebase video
+        videoView.setVideoPath("http://192.168.43.123:8000/video.mp4")
         databasef = FirebaseDatabase.getInstance().getReference("/")
 
         stdId.text="$studentName : $studentId"
