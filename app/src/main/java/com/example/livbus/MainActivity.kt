@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         //videoView.setVideoPath("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4")
         //videoView.setVideoPath("https://console.firebase.google.com/project/livbus-ae064/storage/livbus-ae064.appspot.com/files/video (2).mp4")//Firebase video
-        videoView.setVideoPath("http://192.168.43.123:8000/video.mp4")
+        videoView.setVideoPath("http://192.168.164.148:8000/video.avi")
         databasef = FirebaseDatabase.getInstance().getReference("/")
 
         stdId.text="$studentName : $studentId"
@@ -68,8 +68,10 @@ class MainActivity : AppCompatActivity() {
                             videoView.start()
                             videoView.setMediaController(mediaController)
                             Toast.makeText(this,"$studentName is in the bus",Toast.LENGTH_LONG).show()
+                            recButton.setOnClickListener{
 
-
+                                download("http://192.168.164.148:8000/video.avi","Bus")
+                            }
                         }
                     }else{
                         //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_SHORT).show()
@@ -101,36 +103,16 @@ class MainActivity : AppCompatActivity() {
         }
         //___________________________________________________________________________________________________________
 
-        //Record cheyyanulla program_________________________________________________________________________________
+        /*/Record cheyyanulla program_________________________________________________________________________________
         recButton.setOnClickListener{
 
-            download("https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4","Bus")
+            download("http://192.168.164.148:8000/video.avi","Bus")
         }
         //____________________________________________________________________________________________________________
-
+        */
     }
 
-    /*/Read data from firebase_________________________________________________________________________________________
-    private fun readData(studentId: String?) {
-        databasef = FirebaseDatabase.getInstance().getReference("/")
-        if (studentId != null) {
-            databasef.child(studentId).get().addOnSuccessListener {
-                if (it.exists()){
-                    val stuid = it.child("student_id").value
 
-                    Toast.makeText(this,"stuid : ${stuid.toString()}",Toast.LENGTH_LONG).show()
-
-                }else{
-                    //Toast.makeText(this,"No student id found on bus",Toast.LENGTH_LONG).show()
-                }
-            }.addOnFailureListener{
-                Log.d(TAG,"Enter student id")
-            }
-
-
-        }
-
-    }*/
     //______________________________________________________________________________________________________________________
 
 
@@ -142,11 +124,11 @@ class MainActivity : AppCompatActivity() {
             val videoLink = Uri.parse(url)
             val request = DownloadManager.Request(videoLink)
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE or DownloadManager.Request.NETWORK_WIFI)
-                .setMimeType("video/mp4")
+                .setMimeType("video/x-msvideo")
                 .setAllowedOverRoaming(false)
                 .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
                 .setTitle(fileName)
-                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, File.separator+fileName+".mp4")
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, File.separator+fileName+".avi")
             downloadManager.enqueue(request)
 
             Toast.makeText(this,"Downloading...",Toast.LENGTH_LONG).show()

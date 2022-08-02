@@ -34,9 +34,6 @@ class LoginActivity : AppCompatActivity() {
 
         loginBtn.setOnClickListener{
             Log.d(TAG, "Student Name => $stdName")
-            /*var i = Intent(this,MainActivity::class.java)
-            startActivity(i)*/
-            //stdName = "Hari"
             Intent(this,MainActivity::class.java).also {
                 it.putExtra("stdName",stdName.text.toString())
                 it.putExtra("stdId",stdId.text.toString())
